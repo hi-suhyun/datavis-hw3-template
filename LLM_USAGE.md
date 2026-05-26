@@ -11,9 +11,9 @@ I used Claude to help implement the skeleton code into a interactive visualizati
 
 ## List of Prompts Used
 
-1. 1. "어떻게 개발 진행하면 좋을지 단계별로 계획세워줘"  
+1. "어떻게 개발 진행하면 좋을지 단계별로 계획세워줘"  
     (Assignment overview + screenshots provided)
-   → Asked for a step-by-step development plan for the assignment.
+    → Asked for a step-by-step development plan for the assignment.
 
 2. "이 내용 한국어로 번역해서 보내주고, 실행 명령어 보내줘"  
    → Asked to translate the README instructions to Korean and provide the run command.
