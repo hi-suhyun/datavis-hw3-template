@@ -24,6 +24,7 @@ const BIN_W = (DIST_W - DIST_LEFT) / 10;
 const ITEMS_PER_BIN_ROW = Math.floor(BIN_W / CELL); // items per horizontal row within a bin
 const ROW_GAP = 10;
 const SUB_GAP = 4;
+const CLASS_HEADER_H = 20; // height reserved at top of each row for the class badge
 
 export default function App() {
   const [items, setItems] = useState([]);
@@ -83,9 +84,10 @@ export default function App() {
         ...cd,
         y: yOff,
         lH,
-        pY: yOff + lH + SUB_GAP,
+        lY: yOff + CLASS_HEADER_H,          // labeled sub-row starts after class badge
+        pY: yOff + CLASS_HEADER_H + lH + SUB_GAP,
         pH,
-        total: lH + SUB_GAP + pH,
+        total: CLASS_HEADER_H + lH + SUB_GAP + pH,
       };
       yOff += row.total + ROW_GAP;
       return row;
@@ -128,7 +130,7 @@ export default function App() {
 
   return (
     <>
-      <h1>Data Visualization HW 3 Sample</h1>
+      <h1>Data Visualization HW 3 Suhyun Kim</h1>
       <div id="container">
         <div id="sidebar">
           {/* Projection View */}
@@ -260,7 +262,7 @@ function DistRow({
   setHoveredId,
   getOpacity,
 }) {
-  const { cls, y, lH, pY, pH, lb, pb, total } = row;
+  const { cls, y, lH, lY, pY, pH, lb, pb, total } = row;
   const lActive = filterLabel === cls;
   const pActive = filterPredicted === cls;
 
@@ -288,19 +290,19 @@ function DistRow({
         />
       ))}
 
-      {/* Class badge */}
-      <text x={2} y={y + 11} fontSize={10.5} fontWeight="bold" fill="#444">
+      {/* Class badge — sits in its own header area above the sub-rows */}
+      <text x={2} y={y + 14} fontSize={10.5} fontWeight="bold" fill="#444">
         Class
       </text>
-      <rect x={37} y={y} width={16} height={16} rx={2} fill={COLORS[cls]} />
-      <text x={45} y={y + 11.5} fontSize={9.5} fill="white" textAnchor="middle" fontWeight="bold">
+      <rect x={37} y={y + 1} width={16} height={16} rx={2} fill={COLORS[cls]} />
+      <text x={45} y={y + 13} fontSize={9.5} fill="white" textAnchor="middle" fontWeight="bold">
         {cls}
       </text>
 
-      {/* "Labeled as X" — clickable filter toggle */}
+      {/* "Labeled as X" — vertically centered in the labeled sub-row */}
       <text
         x={2}
-        y={y + lH / 2 + 4}
+        y={lY + lH / 2 + 4}
         fontSize={9.5}
         fill={lActive ? COLORS[cls] : '#555'}
         fontWeight={lActive ? 'bold' : 'normal'}
@@ -311,7 +313,7 @@ function DistRow({
         Labeled as {cls}
       </text>
 
-      {/* "Predicted as X" — clickable filter toggle */}
+      {/* "Predicted as X" — vertically centered in the predicted sub-row */}
       <text
         x={2}
         y={pY + pH / 2 + 4}
@@ -335,7 +337,7 @@ function DistRow({
               key={`l-${item.id}`}
               item={item}
               x={DIST_LEFT + bi * BIN_W + col * CELL}
-              y={y + lH - (rowIdx + 1) * CELL}
+              y={lY + lH - (rowIdx + 1) * CELL}
               hoveredId={hoveredId}
               setHoveredId={setHoveredId}
               opacity={getOpacity(item.id)}

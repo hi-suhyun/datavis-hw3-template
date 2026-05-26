@@ -4,8 +4,8 @@
 You must fill out the following form. Please see LearnUs for detailed instructions. Also, please don't forget to update the `LLM_USAGE.md` file.
 
 ---
-- Name: __________
-- Student ID number: __________
+- Name: 김수현
+- Student ID number: 2023155002
 - URL to video demo: https://..........
 - Optional Comments:
 ---
