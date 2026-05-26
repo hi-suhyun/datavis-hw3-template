@@ -385,6 +385,7 @@ function ImageCell({ item, x, y, hoveredId, setHoveredId, opacity }) {
         width={IMG_SIZE}
         height={IMG_SIZE}
         style={{ imageRendering: 'pixelated' }}
+        pointerEvents="none"
       />
       {isHov && (
         <rect
@@ -423,7 +424,7 @@ function PcpOverlay({ hoveredItem, rows, totalH }) {
   }).join(' ');
 
   return (
-    <g transform={`translate(${pcpX}, ${pcpY})`}>
+    <g transform={`translate(${pcpX}, ${pcpY})`} pointerEvents="none">
       <rect
         x={0}
         y={0}

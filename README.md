@@ -6,8 +6,8 @@ You must fill out the following form. Please see LearnUs for detailed instructio
 ---
 - Name: 김수현
 - Student ID number: 2023155002
-- URL to video demo: https://..........
-- Optional Comments:
+- URL to video demo: https://youtu.be/uSxrOTLWqkQ
+- Optional Comments: -
 ---
 
 This repository contains the skeleton code used in the Data Visualization course at Yonsei University taught by Prof. Minsuk Kahng.
